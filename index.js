@@ -11,10 +11,8 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Connect to MongoDB
-mongoose.connect(process.env.CONNECTION_STRING, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log("Connected to MongoDB"))
+mongoose.connect(process.env.CONNECTION_STRING)
+  .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("Failed to connect to MongoDB", err));
 
 // Show all recipes
