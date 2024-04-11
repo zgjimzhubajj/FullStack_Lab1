@@ -59,17 +59,17 @@ app.post("/api/recipes", async (req, res) => {
 app.put("/api/recipes/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const recipe = await Recipe.findById(id);
-    if (!recipe) {
-      return res.status(404).json({ message: "Recipe not found" });
-    }
-    Object.assign(recipe, req.body);
-    const updatedRecipe = await recipe.save();
-    res.json(updatedRecipe);
+      const updatedRecipe = await Recipe.findByIdAndUpdate(id, req.body, { new: true });
+      // { new: true } option ensures that the updated document is returned
+      if (!updatedRecipe) {
+          return res.status(404).json({ message: "Recipe not found" });
+      }
+      res.json(updatedRecipe);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+      res.status(400).json({ message: err.message });
   }
 });
+
 
 // Delete a recipe
 app.delete("/api/recipes/:id", async (req, res) => {

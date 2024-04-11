@@ -54,8 +54,17 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error adding recipe:", error));
     });
   
-    window.updateRecipe = function (id) {
-      console.log("Updating recipe with ID:", id);
+    window.updateRecipe = function (title) {
+        fetch(`/api/recipes?title=${encodeURIComponent(title)}`)
+            .then(response => response.json())
+            .then(recipe => {
+                // Here you can populate a form with the recipe data for editing
+            document.getElementById("title").value = recipe.title;
+            document.getElementById("ingredients").value = recipe.ingredients;
+            document.getElementById("instructions").value = recipe.instructions;
+            document.getElementById("cookingTime").value = recipe.cookingTime;
+            })
+            .catch(error => console.error("Error fetching recipe for editing:", error));
     };
   
     window.deleteRecipe = function (id) {
@@ -77,3 +86,5 @@ document.addEventListener("DOMContentLoaded", function () {
     getAllRecipes();
   });
   
+
+
