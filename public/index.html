@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Database</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Recipe Database</h1>
+
+  <!-- Form to create a new recipe -->
+  <h2>Add New Recipe</h2>
+  <form id="addRecipeForm">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br>
+    <label for="ingredients">Ingredients:</label><br>
+    <textarea id="ingredients" name="ingredients" required></textarea><br>
+    <label for="instructions">Instructions:</label><br>
+    <textarea id="instructions" name="instructions" required></textarea><br>
+    <label for="cookingTime">Cooking Time (minutes):</label><br>
+    <input type="number" id="cookingTime" name="cookingTime" required><br><br>
+    <button type="submit">Add Recipe</button>
+  </form>
+
+  <!-- Table to display all recipes -->
+  <h2>All Recipes</h2>
+  <table id="recipeTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Ingredients</th>
+        <th>Instructions</th>
+        <th>Cooking Time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="recipeList">
+      <!-- Recipe data will be populated here dynamically -->
+    </tbody>
+  </table>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
