@@ -55,20 +55,51 @@ app.post("/api/recipes", async (req, res) => {
   }
 });
 
-// Update a recipe
-app.put("/api/recipes/:id", async (req, res) => {
+// Retrieve a specific recipe by ID
+app.get("/api/recipes/by-id/:id", async (req, res) => {
   const id = req.params.id;
   try {
-      const updatedRecipe = await Recipe.findByIdAndUpdate(id, req.body, { new: true });
-      // { new: true } option ensures that the updated document is returned
+      const recipe = await Recipe.findById(id);
+      if (!recipe) {
+          return res.status(404).json({ message: "Recipe not found" });
+      }
+      res.json(recipe);
+  } catch (err) {
+      res.status(500).json({ message: err.message });
+  }
+});
+
+
+// Update a recipe by ID and Update
+app.put("/api/recipes/by-id/:id", async (req, res) => {
+  const id = req.params.id;
+  const { title, ingredients, instructions, cookingTime } = req.body;
+
+  try {
+      const updatedRecipe = await Recipe.findByIdAndUpdate(
+          id,
+          {
+              title,
+              ingredients,
+              instructions,
+              cookingTime: parseInt(cookingTime, 10)
+          },
+          { new: true }
+      );
+
       if (!updatedRecipe) {
           return res.status(404).json({ message: "Recipe not found" });
       }
+
       res.json(updatedRecipe);
-  } catch (err) {
-      res.status(400).json({ message: err.message });
+  } catch (error) {
+      console.error("Failed to update the recipe", error);
+      res.status(500).json({ error: "Failed to update the recipe" });
   }
 });
+
+
+
 
 
 // Delete a recipe

@@ -20,10 +20,11 @@
     <textarea id="instructions" name="instructions" required></textarea><br>
     <label for="cookingTime">Cooking Time (minutes):</label><br>
     <input type="number" id="cookingTime" name="cookingTime" required><br><br>
+    <input type="hidden" id="recipeId" name="recipeId">
     <button type="submit">Add Recipe</button>
   </form>
 
-  <!-- Table to display all recipes -->
+  <!-- Table to display recipes -->
   <h2>All Recipes</h2>
   <table id="recipeTable">
     <thead>
@@ -36,9 +37,25 @@
       </tr>
     </thead>
     <tbody id="recipeList">
-      <!-- Recipe data will be populated here dynamically -->
+      
     </tbody>
   </table>
+
+  <!-- Form to edit recipe -->
+<h2>Edit Recipe</h2>
+<form id="editRecipeForm">
+    <input type="hidden" id="recipeId" name="recipeId">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br>
+    <label for="ingredients">Ingredients:</label><br>
+    <textarea id="ingredients" name="ingredients" required></textarea><br>
+    <label for="instructions">Instructions:</label><br>
+    <textarea id="instructions" name="instructions" required></textarea><br>
+    <label for="cookingTime">Cooking Time (minutes):</label><br>
+    <input type="number" id="cookingTime" name="cookingTime" required><br><br>
+    <button id="updateButton" type="submit">Save</button>
+</form>
+
 
   <script src="scripts.js"></script>
 </body>
