@@ -10,7 +10,7 @@ To run the Recipe Management System locally:
 4. Create an `.env` file and add the `PORT` and `CONNECTION_URL` variables.
 5. Start the server by running `npm run dev`.
 6. Visit http://localhost:5000 in your web browser to access the Recipe Management System.
-7. Tips: Check the JSON package for the dependecies, so that you `Install` what is required by running `npm install (name of dependency)`
+7. `Tips`: Check the JSON package for the dependecies, so that you `Install` what is required by running `npm install (name of dependency)`
 # Technologies Used
 - MongoDB
 - Node.js
